@@ -1,7 +1,9 @@
 package com.example.controller;
 
+import com.example.dto.UserDto;
 import com.example.entity.User;
 import com.example.repository.UserRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +27,9 @@ public class HelloController {
 
     // Insert a new user
     @PostMapping("/api/users")
-    public ResponseEntity<User> createUser(@RequestBody User user) {
+    public ResponseEntity<User> createUser(@RequestBody UserDto userDto) {
+        User user = new User();
+        BeanUtils.copyProperties(userDto, user);
         User savedUser = userRepository.save(user);
         return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     }
