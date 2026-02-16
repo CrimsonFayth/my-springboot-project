@@ -1,0 +1,23 @@
+# Maven build artifacts
+target/
+.m2/
+
+# IDE
+.vscode/
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Build
+*.jar
+*.war
+*.ear
